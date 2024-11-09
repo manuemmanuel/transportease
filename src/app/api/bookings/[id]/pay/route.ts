@@ -9,8 +9,8 @@ type RouteParams = {
 }
 
 export async function POST(
-    request: Request,
-    context: { params: { id: string } }  
+    req: NextRequest,
+    { params }: { params: { id: string } }
 ) {
   try {
     const cookieStore = cookies()
@@ -20,7 +20,7 @@ export async function POST(
     const { error } = await supabase
       .from('bookings')
       .update({ status: 'paid' })
-      .eq('id', context.params.id)
+      .eq('id', params.id)
 
     if (error) throw error
 
