@@ -1,19 +1,26 @@
 import { createRouteHandlerClient } from '@supabase/auth-helpers-nextjs'
 import { cookies } from 'next/headers'
-import { NextResponse } from 'next/server'
+import { NextRequest, NextResponse } from 'next/server'
+
+type RouteParams = {
+  params: {
+    id: string
+  }
+}
 
 export async function POST(
-  request: Request,
-  { params }: { params: { id: string } }
+  req: NextRequest,
+  context: RouteParams
 ) {
   try {
-    const supabase = createRouteHandlerClient({ cookies })
+    const cookieStore = cookies()
+    const supabase = createRouteHandlerClient({ cookies: () => cookieStore })
 
     // Update booking status to paid
     const { error } = await supabase
       .from('bookings')
       .update({ status: 'paid' })
-      .eq('id', params.id)
+      .eq('id', context.params.id)
 
     if (error) throw error
 
