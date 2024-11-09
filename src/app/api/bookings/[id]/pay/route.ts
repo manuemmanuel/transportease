@@ -2,9 +2,15 @@ import { createRouteHandlerClient } from '@supabase/auth-helpers-nextjs'
 import { cookies } from 'next/headers'
 import { NextRequest, NextResponse } from 'next/server'
 
+type RouteParams = {
+  params: {
+    id: string
+  }
+}
+
 export async function POST(
-  request: NextRequest,
-  { params }: { params: { id: string } }
+  req: NextRequest,
+  context: RouteParams
 ) {
   try {
     const cookieStore = cookies()
@@ -14,7 +20,7 @@ export async function POST(
     const { error } = await supabase
       .from('bookings')
       .update({ status: 'paid' })
-      .eq('id', params.id)
+      .eq('id', context.params.id)
 
     if (error) throw error
 
