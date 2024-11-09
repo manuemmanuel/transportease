@@ -9,8 +9,13 @@ type RouteParams = {
 }
 
 export async function POST(
+<<<<<<< HEAD
     request: Request,
     context: { params: { id: string } }  
+=======
+  req: NextRequest,
+  context: RouteParams
+>>>>>>> 9113f71bd00b2ac38ac85c9dfbeb13ed3b3448f3
 ) {
   try {
     const cookieStore = cookies()
