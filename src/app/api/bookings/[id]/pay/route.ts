@@ -9,8 +9,8 @@ type RouteParams = {
 }
 
 export async function POST(
-  req: NextRequest,
-  context: RouteParams
+    request: Request,
+    context: { params: { id: string } }  
 ) {
   try {
     const cookieStore = cookies()
