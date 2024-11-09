@@ -1,0 +1,147 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: 'Ranade';
+  src: url('/fonts/Ranade-Regular.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}
+
+.bg-noise {
+  background-image: radial-gradient(circle, rgba(0, 0, 0, 0.1) 1px, transparent 1px);
+  background-size: 3px 3px;
+}
+
+/* Add these styles */
+.pac-container {
+  background-color: #1f2937;
+  border: 1px solid #374151;
+  border-radius: 0.5rem;
+  margin-top: 4px;
+  padding: 0.5rem;
+  z-index: 1000;
+}
+
+.pac-item {
+  padding: 0.5rem;
+  color: white;
+  cursor: pointer;
+  border-top: 1px solid #374151;
+}
+
+.pac-item:first-child {
+  border-top: none;
+}
+
+.pac-item:hover {
+  background-color: #374151;
+}
+
+.pac-item-query {
+  color: #AAFF30;
+}
+
+.pac-matched {
+  color: #AAFF30;
+}
+
+@layer base {
+  * {
+    @apply transition-all duration-200;
+  }
+}
+
+@layer components {
+  /* Base component styling */
+  button,
+  input,
+  select,
+  textarea,
+  .card,
+  .dialog-content,
+  .sheet-content,
+  .dropdown-content,
+  .select-content,
+  .popover-content,
+  [class*="radix-"] {
+    @apply rounded-xl shadow-sm border border-gray-800/50 backdrop-blur-sm;
+  }
+
+  /* Input fields */
+  input, textarea, select {
+    @apply bg-gray-800/50 hover:bg-gray-800/70 focus:ring-2 focus:ring-[#AAFF30]/50 focus:border-[#AAFF30];
+  }
+
+  /* Buttons */
+  button {
+    @apply hover:shadow-md active:scale-95 disabled:opacity-50 disabled:scale-100;
+  }
+
+  /* Cards and containers */
+  .card {
+    @apply hover:shadow-lg hover:shadow-[#AAFF30]/5 hover:border-[#AAFF30]/20 bg-gray-800/30;
+  }
+
+  /* Modal/Dialog/Sheet */
+  .dialog-content,
+  .sheet-content {
+    @apply border border-gray-800 bg-gray-900/95 backdrop-blur-lg;
+  }
+
+  /* Dropdown and Select */
+  .select-content,
+  .dropdown-content {
+    @apply bg-gray-800/95 border-gray-700 backdrop-blur-lg animate-in fade-in-80 zoom-in-95;
+  }
+
+  /* Interactive elements hover state */
+  .interactive-hover {
+    @apply hover:scale-[1.02] hover:shadow-lg transition-all duration-200;
+  }
+
+  /* Glass morphism effect */
+  .glass-effect {
+    @apply bg-gray-800/30 backdrop-blur-md border border-gray-700/50;
+  }
+
+  .hover-effect {
+    @apply hover:scale-105 transition-all duration-300 hover:shadow-lg hover:shadow-[#AAFF30]/20;
+  }
+
+  .rounded-component {
+    @apply rounded-2xl;
+  }
+
+  .button-effect {
+    @apply rounded-full hover:scale-105 transition-all active:scale-95;
+  }
+
+  .glass-card {
+    @apply bg-gray-800/50 border-gray-700/50 backdrop-blur-sm rounded-3xl hover:border-[#AAFF30]/20 transition-all duration-300;
+  }
+
+  .input-field {
+    @apply bg-gray-700/30 border-gray-600/50 rounded-xl focus:ring-[#AAFF30]/20 focus:border-[#AAFF30] transition-all duration-300;
+  }
+
+  .hover-scale {
+    @apply transform hover:scale-105 transition-all duration-300;
+  }
+
+  .neon-glow {
+    @apply shadow-lg hover:shadow-[#AAFF30]/20;
+  }
+}
+
+@keyframes selectAnimation {
+  from {
+    opacity: 0;
+    transform: translateY(-2px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
