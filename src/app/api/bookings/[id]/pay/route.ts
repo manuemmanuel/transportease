@@ -10,7 +10,7 @@ type RouteParams = {
 
 export async function POST(
     req: NextRequest,
-    { params }: { params: { id: string } }
+    { params }: RouteParams
 ) {
   try {
     const cookieStore = cookies()
